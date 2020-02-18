@@ -1,0 +1,9 @@
+/.idea/
+*.csv
+/data/
+__pycache__/
+*.pyc
+.ipynb_checkpoints
+/rip_code/
+*.java
+*json
