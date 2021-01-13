@@ -480,7 +480,7 @@ def compute_peak_valley(rip: np.ndarray,
     """
 
     rip_filtered = rip
-    print(rip_filtered.shape)
+#     print(rip_filtered.shape)
     data_smooth = smooth(data=rip_filtered, span=smoothing_factor)
     window_length = int(round(time_window * fs))
     # plt.figure()
@@ -711,18 +711,18 @@ def rip_cycle_feature_computation(peaks_datastream: np.ndarray,
                            neighbor_ratio_expiration_datastream[:,2].reshape(-1,1),
                            neighbor_ratio_stretch_datastream[:,2].reshape(-1,1)],axis=1)
 
-import matplotlib.pyplot as plt
-import pandas as pd
-data = pd.read_csv('rip.csv',delimiter=',').values[100000:200000]
-peaks,valleys = compute_peak_valley(data)
-features = rip_cycle_feature_computation(peaks,valleys)
-plt.plot(features[:,0],features[:,4])
-plt.show()
-print(features.shape)
-plt.plot(data[:,0],data[:,1])
-plt.plot(np.array(peaks)[:,0],np.array(peaks)[:,1],'*')
-plt.plot(np.array(valleys)[:,0],np.array(valleys)[:,1],'o')
-plt.show()
+# import matplotlib.pyplot as plt
+# import pandas as pd
+# data = pd.read_csv('rip.csv',delimiter=',').values[100000:200000]
+# peaks,valleys = compute_peak_valley(data)
+# features = rip_cycle_feature_computation(peaks,valleys)
+# plt.plot(features[:,0],features[:,4])
+# plt.show()
+# print(features.shape)
+# plt.plot(data[:,0],data[:,1])
+# plt.plot(np.array(peaks)[:,0],np.array(peaks)[:,1],'*')
+# plt.plot(np.array(valleys)[:,0],np.array(valleys)[:,1],'o')
+# plt.show()
 
 
 
