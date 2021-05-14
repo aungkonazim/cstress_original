@@ -81,7 +81,8 @@ def frequencyDomain(tmStamps,RRints, lf_bw = 0.11, hf_bw = 0.1):
 
 
 def ecg_feature_computation(b,a):
-    return [np.var(a),iqr(a),np.mean(a),np.median(a),np.percentile(a,80),np.percentile(a,20),60000/np.median(a)]+list(frequencyDomain(b,a).values())
+    return [np.var(a),iqr(a),np.mean(a),np.median(a),np.percentile(a,80),
+            np.percentile(a,20),60000/np.median(a)]+list(frequencyDomain(np.cumsum(a)/1000,a/1000).values())
 
 
 
