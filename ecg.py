@@ -41,9 +41,9 @@ def frequencyDomain(tmStamps,RRints, lf_bw = 0.11, hf_bw = 0.1):
     NNs = []
     tss = []
     for c, rr in enumerate(RRints):        
-        if abs(rr - RRints[c-1]) <= 0.20 * RRints[c-1]:
-            NNs.append(rr)
-            tss.append(tmStamps[c])
+#         if abs(rr - RRints[c-1]) <= 0.20 * RRints[c-1]:
+        NNs.append(np.int64(rr*1000))
+        tss.append(tmStamps[c])
             
             
     frequency_range = np.linspace(0.001, 1, 10000)
@@ -81,8 +81,10 @@ def frequencyDomain(tmStamps,RRints, lf_bw = 0.11, hf_bw = 0.1):
 
 
 def ecg_feature_computation(b,a):
+    b = b - np.min(b)
     return [np.var(a),iqr(a),np.mean(a),np.median(a),np.percentile(a,80),
-            np.percentile(a,20),60000/np.median(a)]+list(frequencyDomain(np.cumsum(a)/1000,a/1000).values())
+            np.percentile(a,20),np.median(a)]+list(frequencyDomain(b/1000
+                                                                   ,a/1000).values())
 
 
 
